@@ -28,6 +28,8 @@ import com.chenupt.adaptergen.core.ItemData;
 
 /**
  * Created by chenupt on 2017/1/24.
+ *
+ * RecyclerView item.
  */
 
 @Adapter(name = "TestAdapter")

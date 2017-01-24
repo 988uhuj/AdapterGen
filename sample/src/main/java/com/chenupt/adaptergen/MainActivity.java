@@ -14,24 +14,27 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-	private RecyclerView recylerView;
+	private RecyclerView recyclerView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		recylerView = (RecyclerView) findViewById(R.id.recyclerView);
-		recylerView.setLayoutManager(new LinearLayoutManager(this));
-		recylerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+		recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+		recyclerView.setLayoutManager(new LinearLayoutManager(this));
+		recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
+		// TestAdapter is generated when building
 		TestAdapter adapter = new TestAdapter();
 		List<ItemData> dataList = new ArrayList<>();
 		for (int i = 0; i < 30; i++) {
+			// Use ItemDataHelper to create a ItemData for RecyclerView Item.
 			ItemDataHelper.wrap("ITEM " + i, TestItem1VH.class).attach(dataList);
+			// Another ItemData which VH is different
 			ItemDataHelper.wrap(i, TestItem2VH.class).attach(dataList);
 		}
 		adapter.dataList = dataList;
 
-		recylerView.setAdapter(adapter);
+		recyclerView.setAdapter(adapter);
 	}
 }
